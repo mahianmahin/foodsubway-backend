@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import *
+
+
+@admin.register(User_info)
+class UserInfoAdmin(admin.ModelAdmin):
+    list_display = ['user', 'phone_number', 'district']
