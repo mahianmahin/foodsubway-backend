@@ -18,6 +18,7 @@ def register_app(request):
                 email = request.data['email']
             )
 
+            user_ins.set_password(request.data['password'])
             user_ins.save()
 
             User_info.objects.create(
@@ -33,6 +34,18 @@ def register_app(request):
                 'msg': 'User created successfully!'
             })
 
+    except Exception as e:
+        return Response({
+            'status': status.HTTP_400_BAD_REQUEST,
+            'msg': str(e.error)
+        })
+
+
+@api_view(['POST'])
+def login_app(request):
+    try:
+        pass
+    
     except Exception as e:
         return Response({
             'status': status.HTTP_400_BAD_REQUEST,
