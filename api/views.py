@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.decorators import (api_view, parser_classes,
                                        permission_classes)
@@ -10,10 +11,14 @@ from rest_framework.response import Response
 from .models import *
 
 
+@csrf_exempt
 @api_view(['GET'])
 def test(request):
+    print("Working............")
+    
     return Response({
-        "msg": "Working"
+        'status': status.HTTP_200_OK,
+        'msg': 'Its working'
     })
 
 
